@@ -16,12 +16,12 @@
     margin-bottom: 15%;
 }
 
-.btn-1 {
+#start {
     background-color: #32CD32;
     margin-right: 25px;
 }
 
-.btn-2 {
+#stop {
     background-color: #ff0000;
 }
 
@@ -31,4 +31,8 @@
     padding: 12px 16px; 
     font-size: 16px; 
     cursor: pointer; 
+  }
+
+  .hidden {
+      background-color: #696969 !important;
   }
