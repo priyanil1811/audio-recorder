@@ -5,6 +5,10 @@
 let startBtn = document.getElementById(`start`)
 let stopBtn = document.getElementById(`stop`)
 let recordImg = document.getElementById(`microphone-img`)
+let audioContainer = document.querySelector(`.content`)
+
+// An array to store audio recordings
+let audioRecordings = []
 
 
 // Load up the microphone, setup the event listeners, etc
@@ -23,13 +27,14 @@ let loadMicrophone = async function() {
 		audioChunks = []
 		recordingNow(true)
 	})
-	
+
+
 	// When the stream STOPS recording
 	mediaRecorder.addEventListener("stop", function(event) {
 		const audioBlob = new Blob(audioChunks)  // Compile the recording bits
 		const audioUrl = URL.createObjectURL(audioBlob)  // Turn into a file
-		const audio = new Audio(audioUrl)
-		audio.play()
+        audioRecordings.push(audioUrl)  // Add recording URL to array
+        createAudioRecord(audioUrl)  // call function to add new audio element
 		recordingNow(false)  // Inform the UI that we're not recording
 	})
 	
@@ -65,6 +70,22 @@ let recordingNow = function(isRecording) {
         startBtn.classList.remove(`disabled`)
         recordImg.classList.add(`hidden`)
 	}
+}
+
+// function to add new audio element using audio source
+let createAudioRecord = function(audioSource) {
+
+    // create new audio element in document
+    const newAudioElement = document.createElement('audio')
+
+    // set source parameter for audio
+    newAudioElement.setAttribute('src', audioSource)
+
+    // set controls parameter to display all controls
+    newAudioElement.setAttribute('controls', true)
+
+    // append audio element in html container
+    audioContainer.append(newAudioElement)
 }
 
 // When the window is loaded and ready to go, get the Microphone ready

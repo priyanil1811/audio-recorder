@@ -19,6 +19,9 @@ body {
 .content {
     margin-top: 8%;
     margin-bottom: 8%;
+}
+
+#record-msg {
     color: #fff;
 }
 
