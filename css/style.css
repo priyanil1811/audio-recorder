@@ -3,17 +3,34 @@
     padding: 0;
 }
 
+body {
+    background-color: #000;
+}
+
 .main-container {
     text-align: center;
 }
 
 .header {
-    margin-top: 2%;
+    margin-top: 1%;
+    color: #fff;
 }
 
 .content {
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    color: #fff;
+}
+
+#microphone-img {
+    width: 20%;
+}
+
+.footer {
+    margin-bottom: 1%;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 }
 
 #start {
@@ -33,6 +50,10 @@
     cursor: pointer; 
   }
 
-  .hidden {
+  .disabled {
       background-color: #696969 !important;
+  }
+
+  .hidden {
+      display: none;
   }

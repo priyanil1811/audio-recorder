@@ -4,6 +4,8 @@
 // Document elements
 let startBtn = document.getElementById(`start`)
 let stopBtn = document.getElementById(`stop`)
+let recordImg = document.getElementById(`microphone-img`)
+
 
 // Load up the microphone, setup the event listeners, etc
 // this is the main execution that does all the work, it's called when the document is loaded fully (listener is at the bottom of this script)!
@@ -55,11 +57,13 @@ let recordingNow = function(isRecording) {
 	
 	// Change the state of button
 	if (isRecording) {
-        startBtn.classList.add(`hidden`)
-        stopBtn.classList.remove(`hidden`)
+        startBtn.classList.add(`disabled`)
+        stopBtn.classList.remove(`disabled`)
+        recordImg.classList.remove(`hidden`)
 	} else {
-        stopBtn.classList.add(`hidden`)
-        startBtn.classList.remove(`hidden`)
+        stopBtn.classList.add(`disabled`)
+        startBtn.classList.remove(`disabled`)
+        recordImg.classList.add(`hidden`)
 	}
 }
 
