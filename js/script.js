@@ -5,7 +5,8 @@
 let startBtn = document.getElementById(`start`)
 let stopBtn = document.getElementById(`stop`)
 let recordImg = document.getElementById(`microphone-img`)
-let audioContainer = document.querySelector(`.content`)
+let audioContainer = document.querySelector(`.listing-table`)
+let recordMsg = document.getElementById(`record-msg`)
 
 // An array to store audio recordings
 let audioRecordings = []
@@ -64,16 +65,31 @@ let recordingNow = function(isRecording) {
 	if (isRecording) {
         startBtn.classList.add(`disabled`)
         stopBtn.classList.remove(`disabled`)
-        recordImg.classList.remove(`hidden`)
+		recordImg.classList.remove(`hidden`)
+		recordMsg.classList.add(`hidden`)
+		
 	} else {
         stopBtn.classList.add(`disabled`)
         startBtn.classList.remove(`disabled`)
-        recordImg.classList.add(`hidden`)
+		recordImg.classList.add(`hidden`)
+		recordMsg.classList.remove(`hidden`)
 	}
 }
 
 // function to add new audio element using audio source
 let createAudioRecord = function(audioSource) {
+
+	// create row elements
+	const tableRow = document.createElement('tr')
+	const tableData = document.createElement('td')
+	const tableData2 = document.createElement('td')
+
+	// create delete icon element
+	const dltIcon = document.createElement('i')
+	dltIcon.setAttribute('class', 'fas fa-trash-alt')
+
+	// add delete icon in second column
+	tableData2.append(dltIcon)
 
     // create new audio element in document
     const newAudioElement = document.createElement('audio')
@@ -84,8 +100,15 @@ let createAudioRecord = function(audioSource) {
     // set controls parameter to display all controls
     newAudioElement.setAttribute('controls', true)
 
-    // append audio element in html container
-    audioContainer.append(newAudioElement)
+    // append audio element in first column
+	tableData.append(newAudioElement)
+
+	// append columns with row
+	tableRow.append(tableData)
+	tableRow.append(tableData2)
+
+	// append row in listing table
+	audioContainer.append(tableRow)
 }
 
 // When the window is loaded and ready to go, get the Microphone ready

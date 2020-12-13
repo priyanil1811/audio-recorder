@@ -12,17 +12,13 @@ body {
 }
 
 .header {
-    margin-top: 1%;
+    margin: 1% 0;
     color: #fff;
-}
-
-.content {
-    margin-top: 8%;
-    margin-bottom: 8%;
 }
 
 #record-msg {
-    color: #fff;
+    color: #808080;
+    margin-bottom: 2%;
 }
 
 #microphone-img {
@@ -59,4 +55,29 @@ body {
 
   .hidden {
       display: none;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  td {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  tr {
+    background-color: #dddddd;
+  }
+
+  tr td:first-child {
+      width: 80%;
+  }
+
+  audio {
+      outline: none;
   }

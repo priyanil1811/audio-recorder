@@ -8,18 +8,20 @@
     <script src="https://kit.fontawesome.com/f17c7224a4.js"></script>
 </head>
 <body>
-    <div class="main-container">
+    <div class="main-container"> 
         <div class="header">
             <h1>All Recordings</h1>
         </div>
         <div class="content">
-            
+            <table class="listing-table">
+                
+            </table>
         </div>
         <div class="img-container">
-            <p id="record-msg">Tap the record button to start the Recording.</p>
             <img id="microphone-img" class="hidden" src="img/voice_loader.gif" alt="recording image">
         </div>
         <div class="footer">
+            <p id="record-msg">Tap the record button to start the Recording.</p>
             <button class="btn" id="start"><i class="fas fa-microphone"></i> Start recording</button>
             <button class="btn disabled" id="stop" disabled><i class="fas fa-stop-circle"></i> Stop recording</button>
         </div>
