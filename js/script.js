@@ -9,6 +9,8 @@ let audioContainer = document.querySelector(`.listing-table`)
 let recordMsg = document.getElementById(`record-msg`)
 let recordListInfo = document.getElementById(`record-list-info`)
 
+// set default row id for audio records
+let tblRowId = 0
 // An array to store audio recordings
 let audioRecordings = []
 
@@ -29,7 +31,6 @@ let loadMicrophone = async function() {
 		audioChunks = []
 		recordingNow(true)
 	})
-
 
 	// When the stream STOPS recording
 	mediaRecorder.addEventListener("stop", function(event) {
@@ -85,10 +86,17 @@ let createAudioRecord = function(audioSource) {
 	const tableRow = document.createElement('tr')
 	const tableData = document.createElement('td')
 	const tableData2 = document.createElement('td')
+	
+	// set id for row element
+	tableRow.setAttribute('id', tblRowId)
 
 	// create delete icon element
 	const dltIcon = document.createElement('i')
 	dltIcon.setAttribute('class', 'fas fa-trash-alt')
+	dltIcon.setAttribute('onclick', `deleteAudioRecord(${tblRowId})`)
+
+	// increase id for next audio record
+	tblRowId++; 
 
 	// add delete icon in second column
 	tableData2.append(dltIcon)
@@ -111,6 +119,12 @@ let createAudioRecord = function(audioSource) {
 
 	// append row in listing table
 	audioContainer.append(tableRow)
+
+}
+
+// create function to delete row when row id provided
+let deleteAudioRecord = function(dltRowId) {
+	audioContainer.deleteRow(dltRowId);	
 }
 
 // When the window is loaded and ready to go, get the Microphone ready
