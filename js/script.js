@@ -7,6 +7,7 @@ let stopBtn = document.getElementById(`stop`)
 let recordImg = document.getElementById(`microphone-img`)
 let audioContainer = document.querySelector(`.listing-table`)
 let recordMsg = document.getElementById(`record-msg`)
+let recordListInfo = document.getElementById(`record-list-info`)
 
 // An array to store audio recordings
 let audioRecordings = []
@@ -73,6 +74,7 @@ let recordingNow = function(isRecording) {
         startBtn.classList.remove(`disabled`)
 		recordImg.classList.add(`hidden`)
 		recordMsg.classList.remove(`hidden`)
+		recordListInfo.classList.add(`hidden`)
 	}
 }
 
