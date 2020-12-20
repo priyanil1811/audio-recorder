@@ -103,3 +103,18 @@ body {
   audio {
       outline: none;
   }
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .right-container {
+        float: none;
+    }
+    .img-container {
+        position: fixed;
+        bottom: 0;
+        margin-bottom: 20%;
+    }
+    .left-container, .right-container {
+        width: 100%;
+    }
+  }
