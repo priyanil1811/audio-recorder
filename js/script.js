@@ -10,7 +10,7 @@ let recordMsg = document.getElementById(`record-msg`)
 let recordListInfo = document.getElementById(`record-list-info`)
 
 // set default row id for audio records
-let tblRowId = 0
+let tblRowId = 1
 // An array to store audio recordings
 let audioRecordings = []
 
@@ -84,47 +84,54 @@ let createAudioRecord = function(audioSource) {
 
 	// create row elements
 	const tableRow = document.createElement('tr')
+		// set id for row element
+		tableRow.setAttribute('id', tblRowId)
+
+	// create first column
+	const tableData1 = document.createElement('td')
+		
+		tableData1.append(tblRowId)
+
 	const tableData = document.createElement('td')
+		
+		// create new audio element in document
+		const newAudioElement = document.createElement('audio')
+
+		// set source parameter for audio
+		newAudioElement.setAttribute('src', audioSource)
+
+		// set controls parameter to display all controls
+		newAudioElement.setAttribute('controls', true)
+
+		// append audio element in first column
+		tableData.append(newAudioElement)
+
 	const tableData2 = document.createElement('td')
-	
-	// set id for row element
-	tableRow.setAttribute('id', tblRowId)
 
-	// create delete icon element
-	const dltIcon = document.createElement('i')
-	dltIcon.setAttribute('class', 'fas fa-trash-alt')
-	dltIcon.setAttribute('onclick', `deleteAudioRecord(${tblRowId})`)
+		// create delete icon element
+		const dltIcon = document.createElement('i')
+		dltIcon.setAttribute('class', 'fas fa-trash-alt')
+		dltIcon.setAttribute('onclick', `deleteAudioRecord(${tblRowId})`)
 
-	// increase id for next audio record
-	tblRowId++; 
+		// add delete icon in second column
+		tableData2.append(dltIcon)
+		
+		// increase id for next audio record
+		tblRowId++; 
 
-	// add delete icon in second column
-	tableData2.append(dltIcon)
-
-    // create new audio element in document
-    const newAudioElement = document.createElement('audio')
-
-    // set source parameter for audio
-    newAudioElement.setAttribute('src', audioSource)
-
-    // set controls parameter to display all controls
-    newAudioElement.setAttribute('controls', true)
-
-    // append audio element in first column
-	tableData.append(newAudioElement)
-
-	// append columns with row
-	tableRow.append(tableData)
-	tableRow.append(tableData2)
-
-	// append row in listing table
-	audioContainer.append(tableRow)
-
+		// append columns with row
+		tableRow.append(tableData1)
+		tableRow.append(tableData)
+		tableRow.append(tableData2)
+		
+		// append row in listing table
+		audioContainer.append(tableRow)
 }
 
 // create function to delete row when row id provided
 let deleteAudioRecord = function(dltRowId) {
-	audioContainer.deleteRow(dltRowId);	
+	var row = document.getElementById(dltRowId);
+    row.parentNode.removeChild(row);	
 }
 
 // When the window is loaded and ready to go, get the Microphone ready

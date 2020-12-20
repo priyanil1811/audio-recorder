@@ -96,8 +96,8 @@ body {
     background-color: #dddddd;
   }
 
-  tr td:first-child {
-      width: 80%;
+  tr td:first-child, tr td:last-child {
+      width: 15%;
   }
 
   audio {
