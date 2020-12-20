@@ -3,6 +3,10 @@
 - Student Name: Priyanka Patel
 - Student Number: N01457528
 
+## Dependecies
+
+- You need allow browser to access your microphone for this program work.
+
 ## Instructions
 
 - By default, this program will display empty recording table on left side, and start and stop recording buttons on right side.
