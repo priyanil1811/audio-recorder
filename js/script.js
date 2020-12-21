@@ -11,9 +11,6 @@ let recordListInfo = document.getElementById(`record-list-info`)
 
 // set default row id for audio records
 let tblRowId = 1
-// An array to store audio recordings
-let audioRecordings = []
-
 
 // Load up the microphone, setup the event listeners, etc
 // this is the main execution that does all the work, it's called when the document is loaded fully (listener is at the bottom of this script)!
@@ -36,7 +33,6 @@ let loadMicrophone = async function() {
 	mediaRecorder.addEventListener("stop", function(event) {
 		const audioBlob = new Blob(audioChunks)  // Compile the recording bits
 		const audioUrl = URL.createObjectURL(audioBlob)  // Turn into a file
-        audioRecordings.push(audioUrl)  // Add recording URL to array
         createAudioRecord(audioUrl)  // call function to add new audio element
 		recordingNow(false)  // Inform the UI that we're not recording
 	})
@@ -131,7 +127,15 @@ let createAudioRecord = function(audioSource) {
 // create function to delete row when row id provided
 let deleteAudioRecord = function(dltRowId) {
 	var row = document.getElementById(dltRowId);
-    row.parentNode.removeChild(row);	
+	row.parentNode.removeChild(row);
+	
+	// count row in table
+	let countRow = document.querySelector(`.listing-table`).rows.length
+
+	// check if table is empty
+	if (countRow === 0) {
+		recordListInfo.classList.remove(`hidden`)  // if yes display msg
+	}
 }
 
 // When the window is loaded and ready to go, get the Microphone ready
