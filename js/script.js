@@ -126,15 +126,24 @@ let createAudioRecord = function(audioSource) {
 
 // create function to delete row when row id provided
 let deleteAudioRecord = function(dltRowId) {
-	var row = document.getElementById(dltRowId);
-	row.parentNode.removeChild(row);
-	
-	// count row in table
-	let countRow = document.querySelector(`.listing-table`).rows.length
 
-	// check if table is empty
-	if (countRow === 0) {
-		recordListInfo.classList.remove(`hidden`)  // if yes display msg
+	// ask for confirmation to delete
+	let confirmDlt = confirm("Are you sure to delete?");
+	
+	// if approved
+	if (confirmDlt === true) {
+
+		// get and delete row
+		let row = document.getElementById(dltRowId);
+		row.parentNode.removeChild(row);
+	
+		// count row in table
+		let countRow = document.querySelector(`.listing-table`).rows.length
+
+		// check if table is empty
+		if (countRow === 0) {
+			recordListInfo.classList.remove(`hidden`)  // if yes display msg
+		}
 	}
 }
 
